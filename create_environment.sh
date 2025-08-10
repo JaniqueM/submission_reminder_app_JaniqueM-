@@ -8,11 +8,13 @@ mkdir -p "$dir_name"
 
 echo "Directory '$dir_name' has been created successfully."
 
+#Making each individual sub-directory
 mkdir -p "$dir_name/app"
 mkdir -p "$dir_name/modules"
 mkdir -p "$dir_name/assets"
 mkdir -p "$dir_name/config"
 
+#Including the script for the reminders
 cat > "$dir_name/app/reminder.sh" << 'EOL'
 #!/bin/bash
 
@@ -29,6 +31,7 @@ check_submissions "$submissions_file"
 EOL
 chmod u+x "$dir_name/app/reminder.sh"
 
+#inclduing the script for the functions 
 cat > "$dir_name/modules/functions.sh" << 'EOL'
 #!/bin/bash
 
@@ -49,6 +52,7 @@ function check_submissions {
 EOL
 chmod u+x "$dir_name/modules/functions.sh"
 
+#including the script for the submissions file
 cat > "$dir_name/assets/submissions.txt" << 'EOL'
 student, assignment, submission status
 Chinemerem, Shell Navigation, not submitted
@@ -56,18 +60,20 @@ Chiagoziem, Git, submitted
 Divine, Shell Navigation, not submitted
 Anissa, Shell Basics, submitted
 Jayden, Linux Commands, submitted
-Natalie, Shell Basics, not submitted
+Natalie, Shell Navigation, not submitted
 Larry, Git, not submitted
 John, Shell Navigation, submitted
 Angelo, Linux Commands, submitted
-Amanda, Git, not submitted
+Amanda, Shell Navigation, not submitted
 EOL
 
+#including the config details
 cat > "$dir_name/config/config.env" << 'EOL'
 ASSIGNMENT="Shell Navigation"
 DAYS_REMAINING=2
 EOL
 
+#Setting up the startup.sh script
 cat > "$dir_name/startup.sh" << 'EOL'
 #!/bin/bash
 set -e
